@@ -1,4 +1,5 @@
 import pygame
+import math
 from game import Game
 from player import Player
 
@@ -12,6 +13,20 @@ screen = pygame.display.set_mode((1000, 600))
 background = pygame.image.load('images/istockphoto-1305076925-1024x1024.jpg')
 newImage = pygame.transform.scale(background, (1000, 600))
 
+#importer notre baniere
+banner = pygame.image.load('images/banner.png') #il faut que ça soint en .png car il faut avoir une transparansse
+banner = pygame.transform.scale(banner,(500, 500))
+banner_rect = banner.get_rect()
+banner_rect.x = math.ceil(screen.get_width() /4) #centraliser l'ecran d'acceuil
+
+#importer notre bouton pour lancer la partie
+play_button = pygame.image.load('images/button.png')
+play_button = pygame.transform.scale(play_button, (400, 150))
+play_button_rect = play_button.get_rect()
+play_button_rect.x = math.ceil(screen.get_width()/3.33) #centraliser le play button sur l'axe x
+play_button_rect.y = math.ceil(screen.get_height()/2) #centraliser le play button sur l'axe y
+                    #### remrque in peut inversser les 2 dernieres ligne pour avoir le bouton deriere le logo
+
 #changement du nom de la classe 
 game = Game()
 
@@ -21,36 +36,20 @@ running = True
 #charger notre joueur
 player = Player()
 
-#importer notre baniere 
-banner = pygame.image.load('images/istockphoto-1305076925-1024x1024.jpg')
-
 while running :
     
     #appliquer l'arriere plan de notre jeu
     screen.blit(newImage, (0,0))
     
-    #appliquer l'image de mon joueur 
-    screen.blit(game.player.newPersonnage, game.player.rect)
-    
-    #vérifier si notre jeu a commencé ou non
-    #if game.is_playing:
-        #declencher les instructions de la partie
-        #game.update(screen)
-        
-    #verifier que le jeu n'a pas encore commencé
-    #else: 
-        #ajouter mon ecran de bienvenue
-        #screen.blit(banner, (0,0))
-    #verifier si le joueur souhaite aller a gauche ou a droite
-    if game.pressed.get(pygame.K_RIGHT) and game.player.rect.x < 900:
-        game.player.move_right()
-    elif game.pressed.get(pygame.K_LEFT) and game.player.rect.x > -5:
-        game.player.move_left()
-    elif game.pressed.get(pygame.K_UP) and game.player.rect.y > -5:
-        game.player.move_up()
-    elif game.pressed.get(pygame.K_DOWN) and game.player.rect.y< 500:
-        game.player.move_down()
-    
+    #vérifier si notre jeu a commencé ou non:
+    if game.is_playing:
+        #declancher les instruction de la partie
+        game.update(screen)
+    #si notre jeu n'a pas commencé
+    else:
+        #ajouter mon ecran de bienvenue 
+        screen.blit(banner, banner_rect)
+        screen.blit(play_button, play_button_rect)
     
     #mettre a jour l'ecran
     pygame.display.flip()
@@ -77,6 +76,12 @@ while running :
             game.pressed[event.key] = True 
         elif event.type == pygame.KEYUP:
             game.pressed[event.key] = False
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            #verification pour savoir si la souris est en collision avec le bouton jouer
+            if play_button_rect.collidepoint(event.pos):
+                #mettre le jeux en mode "lancé"
+                game.is_playing = True
                 
                 
                 
