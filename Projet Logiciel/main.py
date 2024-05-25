@@ -3,11 +3,7 @@ import math
 from game import Game
 from player import Player
 
-
-#coucou c'est le pc de tarik TEST TEST TEST
-# Wassim
-
-#ghhvdjcdhyuoiskjbhvhgfcfhudsjbnc dcxkj,<
+#Tarik j'ai enlevé les changement de test
 
 pygame.init()
 
