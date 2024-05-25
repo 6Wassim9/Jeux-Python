@@ -4,6 +4,7 @@ from game import Game
 from player import Player
 
 #Tarik j'ai enlevé les changement de test
+#Tarik tu peut faire copie coller au modifification que t'as apporté en regardant la video 3 normalement il suffit juste de chercher dans ton pc pour trouver l'enplacement de l'ancien dossier (normalement il existe encore)
 
 pygame.init()
 
