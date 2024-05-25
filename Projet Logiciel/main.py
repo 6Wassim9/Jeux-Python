@@ -3,6 +3,12 @@ import math
 from game import Game
 from player import Player
 
+
+#coucou c'est le pc de tarik TEST TEST TEST
+
+
+
+
 pygame.init()
 
 #generer la fenetre de notre jeu
