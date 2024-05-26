@@ -23,7 +23,4 @@ class Game:
             self.player.move_right()
         elif self.pressed.get(pygame.K_LEFT) and self.player.rect.x > -5:
             self.player.move_left()
-        elif self.pressed.get(pygame.K_UP) and self.player.rect.y > -5:
-            self.player.move_up()
-        elif self.pressed.get(pygame.K_DOWN) and self.player.rect.y< 500:
-            self.player.move_down()
+
