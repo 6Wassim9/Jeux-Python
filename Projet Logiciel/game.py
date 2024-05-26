@@ -16,7 +16,8 @@ class Game:
         #appliquer l'image de mon joueur 
         screen.blit(self.player.newPersonnage, self.player.rect)
         
-        #vérifier si notre jeu a commencé ou non
+        #appliquer l'ensemble des images de mon groupe de projectiles
+        self.player.all_projectiles.draw(screen)
         
         #verifier si le joueur souhaite aller a gauche ou a droite ou en haut ou en bas
         if self.pressed.get(pygame.K_RIGHT) and self.player.rect.x < 900:
