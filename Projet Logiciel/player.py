@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y = 180
     def launch_projectile(self):
         #creer une nouvelle instance de la classe projectile
-        self.all_projectiles.add(Projectile())
+        self.all_projectiles.add(Projectile(self))
     def move_right(self):
         self.rect.x += self.velocity
     
