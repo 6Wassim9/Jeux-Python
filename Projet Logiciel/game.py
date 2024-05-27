@@ -18,12 +18,19 @@ class Game:
         self.spawn_monster()
     
     def update(self, screen):
+        
         #appliquer l'image de mon joueur 
         screen.blit(self.player.newPersonnage, self.player.rect)
         
         #récuperer les projectiles du joueur 
         for projectile in self.player.all_projectiles:
             projectile.move()
+            
+        #recuperer les monstres de notre jeau //HADI NORMALEMEN NTOU DIROUHA MAIS NSSAHA9 NZID NDIR FIHA DONC NI DERTHA
+        for monster in game.all_monsters:
+            monster.forward()
+            monster.update_health_bar(screen)
+            
             
         #appliquer l'ensemble des images de mon groupe de projectiles
         self.player.all_projectiles.draw(screen)

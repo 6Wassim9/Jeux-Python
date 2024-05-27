@@ -3,9 +3,6 @@ import math
 from game import Game
 from player import Player
 
-#coucou c'est le pc de Wassim TEST TEST TEST
-
-
 
 
 
