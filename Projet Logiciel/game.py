@@ -1,5 +1,6 @@
 import pygame
 from player import Player
+from monster import Monster
 
 #crere une classe qui represente notre jeu
 class Game:
@@ -10,19 +11,29 @@ class Game:
         #generer notre joueur
         self.player = Player()
         self.pressed = {}
+        
+        #groupe de monstres
+        self.all_monstres = pygame.sprite.Group()
+        self.pressed = {}
+        self.spawn_monster()
     
     def update(self, screen):
         #appliquer l'image de mon joueur 
         screen.blit(self.player.newPersonnage, self.player.rect)
         
-        #vérifier si notre jeu a commencé ou non
-        
+        #récuperer les projectiles du joueur 
+        for projectile in self.player.all_projectiles:
+            projectile.move()
+            
+        #appliquer l'ensemble des images de mon groupe de projectiles
+        self.player.all_projectiles.draw(screen)
+    
         #verifier si le joueur souhaite aller a gauche ou a droite ou en haut ou en bas
         if self.pressed.get(pygame.K_RIGHT) and self.player.rect.x < 900:
             self.player.move_right()
         elif self.pressed.get(pygame.K_LEFT) and self.player.rect.x > -5:
             self.player.move_left()
-        elif self.pressed.get(pygame.K_UP) and self.player.rect.y > -5:
-            self.player.move_up()
-        elif self.pressed.get(pygame.K_DOWN) and self.player.rect.y< 500:
-            self.player.move_down()
+            
+def spawn_monster(self):
+    monster = Monster()
+    self.all_monster.add(monster)

@@ -21,7 +21,7 @@ newImage = pygame.transform.scale(background, (1000, 600))
 
 #importer notre baniere
 banner = pygame.image.load('images/banner.png') #il faut que ça soint en .png car il faut avoir une transparansse
-banner = pygame.transform.scale(banner,(500, 500))
+banner = pygame.transform.scale(banner,(500, 500)) 
 banner_rect = banner.get_rect()
 banner_rect.x = math.ceil(screen.get_width() /4) #centraliser l'ecran d'acceuil
 
@@ -51,6 +51,7 @@ while running :
     if game.is_playing:
         #declancher les instruction de la partie
         game.update(screen)
+        
     #si notre jeu n'a pas commencé
     else:
         #ajouter mon ecran de bienvenue 
@@ -67,19 +68,12 @@ while running :
             running = False
             pygame.quit()
             print("Fermeture du jeu")
-        #detecter si un joueur lache une touche du clavier
-        #elif event.type == pygame.KEYDOWN:
-            #quelle touche a été utilisée
-            #if event.key == pygame.K_RIGHT:
-                #game.player.move_right()
-            #elif event.key == pygame.K_LEFT:
-                #game.player.move_left()
-            #elif event.key == pygame.K_UP:
-                #game.player.move_up()
-            #elif event.key == pygame.K_DOWN:
-                #game.player.move_down()
         elif event.type == pygame.KEYDOWN:
             game.pressed[event.key] = True 
+
+            #detecter si la touche espace est declenchée pour lancer notre projectile
+            if event.key == pygame.K_SPACE:
+                game.player.launch_projectile()
         elif event.type == pygame.KEYUP:
             game.pressed[event.key] = False
 
