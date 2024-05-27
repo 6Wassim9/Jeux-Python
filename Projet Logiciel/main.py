@@ -3,9 +3,6 @@ import math
 from game import Game
 from player import Player
 
-#Tarik j'ai enlevé les changement de test
-#Tarik tu peut faire copie coller au modifification que t'as apporté en regardant la video 3 normalement il suffit juste de chercher dans ton pc pour trouver l'enplacement de l'ancien dossier (normalement il existe encore)
-
 pygame.init()
 
 #generer la fenetre de notre jeu
@@ -48,6 +45,7 @@ while running :
     if game.is_playing:
         #declancher les instruction de la partie
         game.update(screen)
+        
     #si notre jeu n'a pas commencé
     else:
         #ajouter mon ecran de bienvenue 

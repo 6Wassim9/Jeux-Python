@@ -11,6 +11,7 @@ class Game:
         #generer notre joueur
         self.player = Player()
         self.pressed = {}
+        
         #groupe de monstres
         self.all_monstres = pygame.sprite.Group()
         self.pressed = {}
@@ -23,6 +24,7 @@ class Game:
         #récuperer les projectiles du joueur 
         for projectile in self.player.all_projectiles:
             projectile.move()
+            
         #appliquer l'ensemble des images de mon groupe de projectiles
         self.player.all_projectiles.draw(screen)
     
@@ -31,6 +33,7 @@ class Game:
             self.player.move_right()
         elif self.pressed.get(pygame.K_LEFT) and self.player.rect.x > -5:
             self.player.move_left()
+            
 def spawn_monster(self):
     monster = Monster()
     self.all_monster.add(monster)

@@ -28,7 +28,9 @@ class Projectile(pygame.sprite.Sprite):
     def move (self):
         self.rect.x += self.velocity
         self.rotate()
+        
         #verifier si notre projectile n'est plus présent sur l'écran
         if self.rect.x > 1000:
+            
             #supprimer le projectile (en dehors de l'ecran)
             self.remove()
