@@ -1,6 +1,6 @@
 import pygame
 from player import Player
-
+from monster import Monster
 
 #crere une classe qui represente notre jeu
 class Game:
@@ -11,6 +11,10 @@ class Game:
         #generer notre joueur
         self.player = Player()
         self.pressed = {}
+        #groupe de monstres
+        self.all_monstres = pygame.sprite.Group()
+        self.pressed = {}
+        self.spawn_monster()
     
     def update(self, screen):
         #appliquer l'image de mon joueur 
@@ -27,4 +31,6 @@ class Game:
             self.player.move_right()
         elif self.pressed.get(pygame.K_LEFT) and self.player.rect.x > -5:
             self.player.move_left()
-
+def spawn_monster(self):
+    monster = Monster()
+    self.all_monster.add(monster)
