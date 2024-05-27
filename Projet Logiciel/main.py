@@ -13,17 +13,17 @@ pygame.display.set_caption("the fucking maze")
 screen = pygame.display.set_mode((1000, 600))
 
 #importer l'arriere plan sur les mesure de la fenetre noir
-background = pygame.image.load('images/istockphoto-1305076925-1024x1024.jpg')
+background = pygame.image.load('Projet Logiciel/images/istockphoto-1305076925-1024x1024.jpg')
 newImage = pygame.transform.scale(background, (1000, 600))
 
 #importer notre baniere
-banner = pygame.image.load('images/banner.png') #il faut que ça soint en .png car il faut avoir une transparansse
+banner = pygame.image.load('Projet Logiciel/images/banner.png') #il faut que ça soint en .png car il faut avoir une transparansse
 banner = pygame.transform.scale(banner,(500, 500)) 
 banner_rect = banner.get_rect()
 banner_rect.x = math.ceil(screen.get_width() /4) #centraliser l'ecran d'acceuil
 
 #importer notre bouton pour lancer la partie
-play_button = pygame.image.load('images/button.png')
+play_button = pygame.image.load('Projet Logiciel/images/button.png')
 play_button = pygame.transform.scale(play_button, (400, 150))
 play_button_rect = play_button.get_rect()
 play_button_rect.x = math.ceil(screen.get_width()/3.33) #centraliser le play button sur l'axe x

@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
         self.attack = 10 
         self.velocity = 1 # la vitesse de l'avatar
         self.all_projectiles = pygame.sprite.Group()
-        self.image = pygame.image.load('images/personnage.png')
+        self.image = pygame.image.load('Projet Logiciel/images/personnage.png')
         self.newPersonnage = pygame.transform.scale(self.image, (80, 80))
         self.rect = self.newPersonnage.get_rect()
         self.rect.x = 0
