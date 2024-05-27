@@ -16,11 +16,19 @@ class Game:
         self.all_monstres = pygame.sprite.Group()
         self.pressed = {}
         self.spawn_monster()
+        self.spawn_monster()
+        
     
     def update(self, screen):
         
         #appliquer l'image de mon joueur 
         screen.blit(self.player.newPersonnage, self.player.rect)
+        
+        #actualiser la barre de vie du joueur
+        game.player = update_health_bar(screen)
+        
+        #actualiser l'image de mon joueur
+        game.player.update_health_bar(screen)
         
         #récuperer les projectiles du joueur 
         for projectile in self.player.all_projectiles:

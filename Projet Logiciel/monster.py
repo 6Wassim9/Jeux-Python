@@ -1,4 +1,5 @@
-import pygame 
+import pygame
+import random
 
 
 # creer une classe qui va gerer la notion de monstre sur notre jeu
@@ -12,13 +13,21 @@ class Monster(pygame.sprite.Sprite) :
         self.attack = 5
         self.image = pygame.image.load('')
         self.rect = self.image.get_rect( )
-        self.rect.x = 1000
+        self.rect.x = 1000 + random.randint(0,300)
         self.rect.y = 540
-        self.velocity = 4
+        self.velocity = random.randint(1,3)
         
-    def damage(self, amount) #amount c'est le montant de dégat fait par le montre
+    def damage(self, amount): #amount c'est le montant de dégat fait par le montre
         # Infliger les degats
-        self.health = amount
+        self.health -= amount
+        
+        #verifier si son nouveau nombre de point de vie est inférieur ou égal à 0
+        if self.health <= 0:
+            #Reapparatre comme un nouveau monstre
+            self.rect.x = 1000 + random.randint(0,300)
+            self.velocity = random.randint(1, 3) #vitesse au hasrd du nouveau montre qui apparait
+            self.health = self.max_health
+            
     
     def update_health_bar(self):
         #definir une couleur pour notre jauge de vie (verte clair)
@@ -43,6 +52,10 @@ class Monster(pygame.sprite.Sprite) :
         # le deplacement ne se fait que s'il n'y a pas de collision avec un groupe de joueur
         if not self.game.check_collision(self,self.game.all_players) :
            self.rect.x -= self.velocity
+        #si le montre est en collision avec le joueur
+        else:
+            #Infliger des degats (au joueur)
+            self.game.player.damage(self.attack)
 
 
 

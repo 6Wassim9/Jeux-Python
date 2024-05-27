@@ -15,6 +15,9 @@ class Projectile(pygame.sprite.Sprite):
         self.origine_image = self.image
         self.angle = 0
         self.player = player
+        
+    def damage(amount):
+        self.health -= amount 
 
     def remove(self):
         self.player.all_projectiles.remove(self)
@@ -29,8 +32,15 @@ class Projectile(pygame.sprite.Sprite):
         self.rect.x += self.velocity
         self.rotate()
         
+        #vérifier si le projectile entre en collision avec un monstre // NORMALEMT NTOUMA LI DIROUH MAIS ANI DERTOU F PLASSETKOOUM
+        for monster in  self.player.game.check_collaision(self, self.player.game.all_monsters):
+            #supprimer le projectile
+            self.recmove()
+            #infliger des dégats
+            monster.damage(self.player.attack)
+        
         #verifier si notre projectile n'est plus présent sur l'écran
-        for montre in self.rect.x > 1000:
+        for montre in self.rect.x > 1080:
             
             #supprimer le projectile (en dehors de l'ecran)
             self.remove()
